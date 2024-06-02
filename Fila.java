@@ -1,3 +1,5 @@
+import java.time.format.DateTimeFormatter;
+
 public class Fila {
     private int primeiro;
     private int ultimo;
@@ -15,6 +17,18 @@ public class Fila {
 
     public Fila() {
         this(CAPACIDADE_MINIMA);
+    }
+
+    public int getPrimeiro() {
+        return primeiro;
+    }
+
+    public int getUltimo() {
+        return ultimo;
+    }
+
+    public Carro[] getDados() {
+        return dados;
     }
 
     public boolean estaVazia() {
@@ -47,14 +61,19 @@ public class Fila {
 
     @Override
     public String toString() {
-        if (estaVazia()) return "fila vazia";
-        String s = "";
+        if (estaVazia()) return "Fila vazia.";
+        StringBuilder s = new StringBuilder();
         int i = primeiro;
+        int posicao = 1;
         do {
-            s += dados[i] + " ";
+            s.append("Posição ").append(posicao).append(": ")
+             .append(dados[i].getPlaca()).append(", horário de entrada: ")
+             .append(dados[i].getHorarioEntrada().format(DateTimeFormatter.ofPattern("HH:mm:ss")))
+             .append("\n");
             i = proxima(i);
+            posicao++;
         } while (i != proxima(ultimo));
-        return s;
+        return s.toString();
     }
 
     public String vetorToString() {

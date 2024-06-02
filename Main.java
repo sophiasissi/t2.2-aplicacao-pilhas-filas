@@ -20,8 +20,7 @@ public class Main {
         
         // Consulta de carro
         estacionamento.consulta("ABC-0123");
+        estacionamento.consulta("DEF-4567");
 
-        estacionamento.sair("AAA-1234");
-        estacionamento.sair("CCC-9101");
     }
 }

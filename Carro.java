@@ -1,4 +1,5 @@
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Carro {
     private String placa;
@@ -15,6 +16,10 @@ public class Carro {
 
     public LocalDateTime getHorarioEntrada() {
         return horarioEntrada;
+    }
+
+    public String infoCarro(DateTimeFormatter formatter) {
+        return "Placa: " + placa + ", Horário de Entrada: " + horarioEntrada.format(formatter);
     }
 
     @Override
